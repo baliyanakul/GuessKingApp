@@ -23,18 +23,11 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install buildozer cython==0.29.33 kivy
 
-    - name: Pre-accept Android SDK Licenses
-      run: |
-        mkdir -p ~/.android
-        touch ~/.android/repositories.cfg
-        wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
-        unzip -q commandlinetools-linux-9477386_latest.zip -d cmdline-tools
-        mkdir -p sdk/cmdline-tools
-        mv cmdline-tools/cmdline-tools sdk/cmdline-tools/latest
-        yes | sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=$HOME/android-sdk --licenses || true
-
     - name: Build Android APK with Buildozer
+      env:
+        AUTO_ACCEPT_AND_SDK_LICENSES: "1"
       run: |
+        buildozer android licenses
         buildozer -v android debug
         
     - name: Upload APK Artifact
