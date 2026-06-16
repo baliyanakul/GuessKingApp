@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y libsqlite3-dev lldd openjdk-17-jdk shared-mime-info unzip zip
+        sudo apt-get install -y libsqlite3-dev lld openjdk-17-jdk shared-mime-info unzip zip
         python3 -m pip install --upgrade pip
         python3 -m pip install buildozer cython==0.29.33 kivy
 
