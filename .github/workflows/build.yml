@@ -25,9 +25,9 @@ jobs:
 
     - name: Build Android APK with Buildozer
       env:
+        # Yeh line build ke dauran piche se aane wale har license ko automatic 'yes' bol degi
         AUTO_ACCEPT_AND_SDK_LICENSES: "1"
       run: |
-        buildozer android licenses
         buildozer -v android debug
         
     - name: Upload APK Artifact
