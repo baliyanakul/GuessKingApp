@@ -31,6 +31,7 @@ jobs:
       run: |
         mkdir -p ~/.android
         echo "count=0" > ~/.android/repositories.cfg
+        buildozer android clean
         yes | buildozer -v android debug
         
     - name: Upload APK Artifact
