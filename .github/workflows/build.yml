@@ -31,7 +31,7 @@ jobs:
       run: |
         mkdir -p ~/.android
         echo "count=0" > ~/.android/repositories.cfg
-        buildozer android clean
+        # Buildozer ko bina clean ke fresh run karenge kyunki server pehle se hi khali hai
         yes | buildozer -v android debug
         
     - name: Upload APK Artifact
