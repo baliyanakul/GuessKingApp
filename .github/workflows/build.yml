@@ -25,16 +25,11 @@ jobs:
 
     - name: Build Android APK with Buildozer
       env:
-        # Yeh dono variables back-end par saare licenses ko automatic YES kar dete hain
         AUTO_ACCEPT_AND_SDK_LICENSES: "1"
-        ANDROID_REPOSITORIES_CFG_TEMPLATE: "1"
       run: |
-        # SDK automatic silent mode mein setup karne ke liye folders pehle hi bana rahe hain
         mkdir -p ~/.android
         echo "count=0" > ~/.android/repositories.cfg
-        
-        # Buildozer run kar rahe hain bina kisi custom yes-man pipe ke
-        buildozer -v android debug
+        yes | buildozer -v android debug
         
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
